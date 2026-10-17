@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+/* ============================================
+   PromptRoute — Design System Tokens (TW v4)
+   ============================================ */
+
+@theme {
+  /* Core brand palette */
+  --color-brand-50: oklch(0.97 0.01 260);
+  --color-brand-100: oklch(0.93 0.03 260);
+  --color-brand-200: oklch(0.86 0.06 260);
+  --color-brand-300: oklch(0.76 0.10 260);
+  --color-brand-400: oklch(0.65 0.17 260);
+  --color-brand-500: oklch(0.55 0.22 260);
+  --color-brand-600: oklch(0.47 0.22 260);
+  --color-brand-700: oklch(0.40 0.19 260);
+  --color-brand-800: oklch(0.33 0.15 260);
+  --color-brand-900: oklch(0.26 0.10 260);
+  --color-brand-950: oklch(0.18 0.07 260);
+
+  /* Accent palette — warm amber/gold for highlights */
+  --color-accent-400: oklch(0.82 0.16 80);
+  --color-accent-500: oklch(0.75 0.18 75);
+  --color-accent-600: oklch(0.65 0.17 70);
+
+  /* Surface palette — dark mode defaults */
+  --color-surface-950: oklch(0.12 0.02 260);
+  --color-surface-900: oklch(0.16 0.02 260);
+  --color-surface-800: oklch(0.21 0.02 260);
+  --color-surface-700: oklch(0.27 0.02 260);
+
+  /* Semantic status colors */
+  --color-success: oklch(0.72 0.19 155);
+  --color-warning: oklch(0.80 0.16 80);
+  --color-danger: oklch(0.65 0.22 25);
+  --color-info: oklch(0.70 0.15 230);
+
+  /* Typography */
+  --font-sans: "Inter", "SF Pro Display", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
+  --font-display: "Outfit", "Inter", system-ui, sans-serif;
+
+  /* Shadows */
+  --shadow-glow: 0 0 40px oklch(0.55 0.22 260 / 0.25);
+  --shadow-card: 0 4px 24px oklch(0 0 0 / 0.3), 0 1px 4px oklch(0 0 0 / 0.2);
+  --shadow-elevated: 0 8px 48px oklch(0 0 0 / 0.4), 0 2px 8px oklch(0 0 0 / 0.25);
+
+  /* Animations */
+  --animate-shimmer: shimmer 2s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-fade-in: fade-in 0.4s ease-out;
+  --animate-pulse-soft: pulse-soft 2.5s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+/* ============================================
+   Keyframe Definitions
+   ============================================ */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Base Layer Overrides
+   ============================================ */
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-surface-950);
+    color: oklch(0.93 0.01 260);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: oklch(0.55 0.22 260 / 0.35);
+    color: white;
+  }
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+@utility glass {
+  background: oklch(0.18 0.02 260 / 0.6);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid oklch(1 0 0 / 0.06);
+}
+
+@utility glass-card {
+  background: oklch(0.18 0.02 260 / 0.45);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border: 1px solid oklch(1 0 0 / 0.08);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+}
+
+@utility shimmer-bg {
+  background: linear-gradient(
+    90deg,
+    oklch(0.21 0.02 260) 25%,
+    oklch(0.27 0.03 260) 50%,
+    oklch(0.21 0.02 260) 75%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@utility gradient-text {
+  background: linear-gradient(135deg, var(--color-brand-300), var(--color-accent-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility gradient-brand {
+  background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-700));
+}
+
+@utility gradient-accent {
+  background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));
+}
+
+@utility glow-ring {
+  box-shadow: 0 0 0 1px oklch(0.55 0.22 260 / 0.3), var(--shadow-glow);
+}
+
+/* ============================================
+   Custom Scrollbar
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.35 0.04 260);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.45 0.06 260);
+}
