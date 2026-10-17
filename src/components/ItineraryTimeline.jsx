@@ -63,7 +63,7 @@ function ActivityCard({ activity, index }) {
         {/* Top row: time + category */}
         <div className="flex items-center justify-between gap-2 mb-3">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-surface-800 border border-slate-200/80 dark:border-transparent text-slate-700 dark:text-white/60 text-xs font-mono font-medium">
-            <Clock className="w-3 h-3 text-slate-400" />
+            <Clock className="w-3 h-3 text-slate-500 dark:text-white/40" />
             {timeSlot}
           </span>
           <CategoryBadge category={category} />
@@ -88,7 +88,7 @@ function ActivityCard({ activity, index }) {
             <span>{formatCost(costEstimateINR).replace('₹', '')}</span>
           </div>
         ) : (
-          <span className="text-xs text-slate-400 dark:text-white/30 font-mono">Free / Included</span>
+          <span className="text-xs text-slate-500 dark:text-white/35 font-mono font-medium">Free / Included</span>
         )}
 
         {visualHookHint && (

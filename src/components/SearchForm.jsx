@@ -80,7 +80,7 @@ export default function SearchForm({ onSubmit, isLoading }) {
             onChange={(e) => setDestination(e.target.value)}
             placeholder="e.g. Tokyo, Bali, Paris, Goa..."
             required
-            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/[0.04] border border-slate-300 dark:border-white/[0.08] text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/25 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all duration-200 text-base shadow-inner dark:shadow-none"
+            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/[0.04] border border-slate-300 dark:border-white/[0.08] text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/25 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all duration-200 text-base shadow-xs dark:shadow-none"
           />
         </div>
 
@@ -111,9 +111,9 @@ export default function SearchForm({ onSubmit, isLoading }) {
                 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-brand-500 dark:[&::-moz-range-thumb]:bg-brand-400 [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
             />
             <div className="flex justify-between mt-1.5 px-0.5">
-              <span className="text-[10px] text-slate-400 dark:text-white/25 font-mono">1</span>
-              <span className="text-[10px] text-slate-400 dark:text-white/25 font-mono">7</span>
-              <span className="text-[10px] text-slate-400 dark:text-white/25 font-mono">14</span>
+              <span className="text-[10px] text-slate-500 dark:text-white/35 font-mono font-medium">1</span>
+              <span className="text-[10px] text-slate-500 dark:text-white/35 font-mono font-medium">7</span>
+              <span className="text-[10px] text-slate-500 dark:text-white/35 font-mono font-medium">14</span>
             </div>
           </div>
         </div>
@@ -136,8 +136,8 @@ export default function SearchForm({ onSubmit, isLoading }) {
                     py-2.5 px-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer
                     ${
                       isActive
-                        ? 'bg-brand-500/15 dark:bg-brand-500/20 border-brand-500/50 dark:border-brand-500/40 text-brand-700 dark:text-brand-200 shadow-sm dark:shadow-[0_0_20px_oklch(0.55_0.22_260/0.15)]'
-                        : 'bg-slate-100 dark:bg-white/[0.03] border-slate-200 dark:border-white/[0.06] text-slate-600 dark:text-white/50 hover:bg-slate-200/60 dark:hover:bg-white/[0.06] hover:text-slate-900 dark:hover:text-white/70'
+                        ? 'bg-brand-500/15 dark:bg-brand-500/20 border-brand-500 dark:border-brand-500/40 text-brand-800 dark:text-brand-200 shadow-sm dark:shadow-[0_0_20px_oklch(0.55_0.22_260/0.15)] ring-1 ring-brand-500/30'
+                        : 'bg-slate-50 dark:bg-white/[0.03] border-slate-200 dark:border-white/[0.06] text-slate-700 dark:text-white/50 hover:bg-slate-100 dark:hover:bg-white/[0.06] hover:text-slate-900 dark:hover:text-white/70'
                     }
                     border
                   `}
@@ -157,7 +157,7 @@ export default function SearchForm({ onSubmit, isLoading }) {
           <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-white/70">
             <Sparkles className="w-4 h-4 text-brand-500 dark:text-brand-400" />
             Trip Vibes
-            <span className="text-slate-400 dark:text-white/30 font-normal text-xs">(pick any)</span>
+            <span className="text-slate-500 dark:text-white/40 font-normal text-xs">(pick any)</span>
           </label>
           <div className="flex flex-wrap gap-2">
             {VIBE_OPTIONS.map(({ label, icon: Icon, color }) => {
@@ -171,13 +171,13 @@ export default function SearchForm({ onSubmit, isLoading }) {
                     inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer
                     ${
                       isActive
-                        ? 'bg-brand-500/15 dark:bg-brand-500/15 border-brand-500/40 dark:border-brand-400/30 text-brand-900 dark:text-white scale-[1.02] shadow-sm'
-                        : 'bg-slate-100 dark:bg-white/[0.03] border-slate-200 dark:border-white/[0.06] text-slate-600 dark:text-white/45 hover:bg-slate-200/70 dark:hover:bg-white/[0.06] hover:text-slate-900 dark:hover:text-white/65'
+                        ? 'bg-brand-500/15 dark:bg-brand-500/15 border-brand-500/50 dark:border-brand-400/30 text-brand-900 dark:text-white scale-[1.02] shadow-sm font-semibold'
+                        : 'bg-slate-50 dark:bg-white/[0.03] border-slate-200 dark:border-white/[0.06] text-slate-700 dark:text-white/45 hover:bg-slate-100 dark:hover:bg-white/[0.06] hover:text-slate-900 dark:hover:text-white/65'
                     }
                     border
                   `}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? color : 'text-slate-400 dark:text-white/30'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? color : 'text-slate-500 dark:text-white/30'}`} />
                   {label}
                 </button>
               );

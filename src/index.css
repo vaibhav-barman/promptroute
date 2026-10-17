@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Enforce class-based dark mode instead of OS media query */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ============================================
    PromptRoute — Design System Tokens (TW v4)
    ============================================ */
@@ -95,8 +98,7 @@
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-card-bg: oklch(0.18 0.02 260 / 0.55);
   --glass-card-border: rgba(255, 255, 255, 0.08);
-  --input-bg: rgba(255, 255, 255, 0.04);
-  --input-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: var(--shadow-card);
   --shimmer-1: oklch(0.21 0.02 260);
   --shimmer-2: oklch(0.29 0.03 260);
   --scrollbar-thumb: oklch(0.35 0.04 260);
@@ -107,12 +109,11 @@ html.light {
   --text-primary: #0f172a;
   --text-secondary: #334155;
   --text-muted: #64748b;
-  --glass-bg: rgba(255, 255, 255, 0.88);
-  --glass-border: rgba(203, 213, 225, 0.9);
-  --glass-card-bg: rgba(255, 255, 255, 0.85);
-  --glass-card-border: rgba(226, 232, 240, 0.95);
-  --input-bg: #ffffff;
-  --input-border: #cbd5e1;
+  --glass-bg: rgba(255, 255, 255, 0.94);
+  --glass-border: rgba(226, 232, 240, 0.95);
+  --glass-card-bg: #ffffff;
+  --glass-card-border: #e2e8f0;
+  --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
   --shimmer-1: #e2e8f0;
   --shimmer-2: #f1f5f9;
   --scrollbar-thumb: #cbd5e1;
@@ -168,7 +169,7 @@ html.light {
   -webkit-backdrop-filter: blur(20px) saturate(1.3);
   border: 1px solid var(--glass-card-border);
   border-radius: 1rem;
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--card-shadow);
 }
 
 @utility shimmer-bg {
@@ -183,20 +184,24 @@ html.light {
 }
 
 @utility gradient-text {
-  background: linear-gradient(135deg, var(--color-brand-400), var(--color-accent-400));
+  background: linear-gradient(135deg, #4338ca, #d97706);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-html.light .gradient-text {
-  background: linear-gradient(135deg, #4f46e5, #d97706);
+.dark .gradient-text, html.dark .gradient-text {
+  background: linear-gradient(135deg, var(--color-brand-300), var(--color-accent-400));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 @utility gradient-brand {
+  background: linear-gradient(135deg, var(--color-brand-600), var(--color-brand-800));
+}
+
+.dark .gradient-brand, html.dark .gradient-brand {
   background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-700));
 }
 
