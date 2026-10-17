@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Loader2, Sparkles, Cpu, Clock } from 'lucide-react';
+import { Loader2, Sparkles, Clock } from 'lucide-react';
 
 export default function LoadingSkeleton() {
   const [seconds, setSeconds] = useState(0);
@@ -22,24 +22,24 @@ export default function LoadingSkeleton() {
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6 animate-fade-in">
       {/* Real-time generation status banner */}
-      <div className="glass-card p-4 sm:p-5 border border-brand-500/20 bg-brand-500/5">
+      <div className="glass-card p-4 sm:p-5 border border-brand-500/25 bg-brand-500/5 dark:bg-brand-500/10">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-brand-500/10 text-brand-400">
+            <div className="p-2 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400">
               <Loader2 className="w-5 h-5 animate-spin" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-white flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-accent-400" />
+              <p className="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-accent-500 dark:text-accent-400" />
                 {getPhaseMessage()}
               </p>
-              <p className="text-xs text-white/40 mt-0.5">
+              <p className="text-xs text-slate-500 dark:text-white/40 mt-0.5">
                 Local inference on Apple Silicon / GPU — zero cloud latency, 100% private
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-800 border border-white/[0.06] text-brand-300 font-mono text-sm font-semibold">
-            <Clock className="w-3.5 h-3.5 text-white/40" />
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-surface-800 border border-slate-200 dark:border-white/[0.06] text-brand-700 dark:text-brand-300 font-mono text-sm font-semibold">
+            <Clock className="w-3.5 h-3.5 text-slate-400 dark:text-white/40" />
             <span>{seconds}s elapsed</span>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function LoadingSkeleton() {
 
       {/* Info footer */}
       <div className="text-center py-2">
-        <p className="text-xs text-white/30 font-mono">
+        <p className="text-xs text-slate-500 dark:text-white/30 font-mono">
           💡 Pro-tip: 2–3 day trips generate ~2x faster than 7+ days on 9B models
         </p>
       </div>

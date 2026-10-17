@@ -74,24 +74,21 @@ function formatINR(num) {
 const TIER_CONFIG = {
   Budget: {
     icon: Coins,
-    gradient: 'from-emerald-500/20 to-emerald-600/5',
+    gradient: 'from-emerald-500/15 to-emerald-600/5',
     border: 'border-emerald-500/20',
-    text: 'text-emerald-300',
-    badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/25',
+    badge: 'bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-500/25',
   },
   'Mid-Range': {
     icon: TrendingUp,
-    gradient: 'from-amber-500/20 to-amber-600/5',
+    gradient: 'from-amber-500/15 to-amber-600/5',
     border: 'border-amber-500/20',
-    text: 'text-amber-300',
-    badge: 'bg-amber-500/15 text-amber-300 border-amber-500/25',
+    badge: 'bg-amber-100 text-amber-900 border-amber-300 dark:bg-amber-500/15 dark:text-amber-300 dark:border-amber-500/25',
   },
   Luxury: {
     icon: Crown,
-    gradient: 'from-purple-500/20 to-purple-600/5',
+    gradient: 'from-purple-500/15 to-purple-600/5',
     border: 'border-purple-500/20',
-    text: 'text-purple-300',
-    badge: 'bg-purple-500/15 text-purple-300 border-purple-500/25',
+    badge: 'bg-purple-100 text-purple-900 border-purple-300 dark:bg-purple-500/15 dark:text-purple-300 dark:border-purple-500/25',
   },
 };
 
@@ -111,14 +108,14 @@ export default function BudgetCard({ budgetSummary }) {
       <div className="flex items-center justify-between gap-4">
         {/* Left: Budget info */}
         <div className="space-y-1.5">
-          <p className="text-xs font-medium text-white/40 uppercase tracking-wider">
+          <p className="text-xs font-semibold text-slate-500 dark:text-white/40 uppercase tracking-wider">
             Estimated Total Budget
           </p>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-white/40 text-lg font-mono">
+            <span className="text-slate-400 dark:text-white/40 text-lg font-mono font-semibold">
               {currencySymbol}
             </span>
-            <span className="text-3xl sm:text-4xl font-bold text-white font-mono tabular-nums tracking-tight">
+            <span className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white font-mono tabular-nums tracking-tight">
               {formatINR(animatedValue)}
             </span>
           </div>
@@ -129,7 +126,7 @@ export default function BudgetCard({ budgetSummary }) {
           className={`
             flex items-center gap-2 px-4 py-2.5 rounded-xl border
             ${config.badge}
-            text-sm font-semibold
+            text-sm font-bold shadow-sm
           `}
         >
           <TierIcon className="w-4.5 h-4.5" />
