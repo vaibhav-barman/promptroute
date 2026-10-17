@@ -1,6 +1,50 @@
+import { useState, useEffect } from 'react';
+import { Loader2, Sparkles, Cpu, Clock } from 'lucide-react';
+
 export default function LoadingSkeleton() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSeconds((s) => s + 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Dynamic milestone message based on typical local model execution phases
+  const getPhaseMessage = () => {
+    if (seconds < 6) return 'Initializing qwen3.5:9b & loading prompt context...';
+    if (seconds < 20) return 'Local neural reasoning: Curating authentic spots & matching vibes...';
+    if (seconds < 38) return 'Structuring timeline schedules & computing INR budget estimates...';
+    return 'Finalizing schema validation & assembling structured JSON...';
+  };
+
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6 animate-fade-in">
+      {/* Real-time generation status banner */}
+      <div className="glass-card p-4 sm:p-5 border border-brand-500/20 bg-brand-500/5">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl bg-brand-500/10 text-brand-400">
+              <Loader2 className="w-5 h-5 animate-spin" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-white flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-accent-400" />
+                {getPhaseMessage()}
+              </p>
+              <p className="text-xs text-white/40 mt-0.5">
+                Local inference on Apple Silicon / GPU — zero cloud latency, 100% private
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-800 border border-white/[0.06] text-brand-300 font-mono text-sm font-semibold">
+            <Clock className="w-3.5 h-3.5 text-white/40" />
+            <span>{seconds}s elapsed</span>
+          </div>
+        </div>
+      </div>
+
       {/* Hero skeleton */}
       <div className="glass-card p-6 sm:p-8 space-y-4">
         <div className="flex items-center gap-3">
@@ -55,10 +99,10 @@ export default function LoadingSkeleton() {
         </div>
       ))}
 
-      {/* Pulsing text */}
-      <div className="text-center py-4">
-        <p className="text-sm text-white/30 animate-pulse-soft font-mono">
-          ✦ AI is crafting your perfect itinerary — this may take 15–30 seconds ✦
+      {/* Info footer */}
+      <div className="text-center py-2">
+        <p className="text-xs text-white/30 font-mono">
+          💡 Pro-tip: 2–3 day trips generate ~2x faster than 7+ days on 9B models
         </p>
       </div>
     </div>

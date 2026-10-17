@@ -53,7 +53,7 @@ function buildUserPrompt({ destination, days, budget, vibes }) {
   return `Plan a ${days}-day trip to ${destination}. 
 Budget tier: ${budget}. 
 Desired vibes: ${vibeString}. 
-Generate the complete itinerary JSON now.`;
+Provide 3-4 concise, high-impact activities per day. Output the minified JSON directly.`;
 }
 
 // -------------------------------------------
@@ -130,8 +130,8 @@ export async function generateItinerary(preferences, { signal } = {}) {
       format: 'json',
       stream: false,
       options: {
-        temperature: 0.7,
-        num_predict: 4096,
+        temperature: 0.3,
+        num_predict: 2500,
       },
     });
 
